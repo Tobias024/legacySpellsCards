@@ -1,0 +1,76 @@
+.spell-list-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+    backdrop-filter: blur(5px);
+}
+
+.spell-list-container h2 {
+    margin-top: 0;
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.spell-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.spell-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.spell-list-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.spell-name {
+    font-weight: 500;
+}
+
+.add-btn {
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.add-btn:hover:not(:disabled) {
+    background: #fcd34d;
+    /* lighter gold */
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.add-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.list-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 1rem;
+    font-style: italic;
+}
+
+@media print {
+    .spell-list-container {
+        display: none;
+    }
+}

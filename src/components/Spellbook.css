@@ -1,0 +1,181 @@
+/* Spellbook.css */
+.spellbook-view {
+    padding: 20px;
+    background-color: var(--bg-secondary);
+    min-height: 100%;
+    color: var(--text-primary);
+    font-family: 'Solway', 'Georgia', serif;
+}
+
+.spellbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+.spellbook-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fdf1dc;
+    /* Parchment-like */
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    min-height: 800px;
+
+    /* Screen columns for preview */
+    column-count: 2;
+    column-gap: 40px;
+    column-rule: 1px solid #c9ad6a;
+}
+
+.spell-entry {
+    break-inside: avoid;
+    /* Prevent splitting spells across columns */
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(88, 24, 13, 0.2);
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.spell-entry h3 {
+    font-family: 'Mr Eaves XL Mod OT', 'Cinzel', serif;
+    color: #58180D;
+    /* Theatrical Red */
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #58180D;
+    display: inline-block;
+}
+
+.spell-classification {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #58180D;
+    margin-bottom: 0.5rem;
+}
+
+.spell-meta-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 10px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    background: rgba(88, 24, 13, 0.05);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.spell-meta-grid strong {
+    color: #58180D;
+}
+
+.spell-body {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #2c0e07;
+    text-align: justify;
+}
+
+.spell-higher-level {
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.spellbook-empty {
+    text-align: center;
+    padding: 4rem;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.spell-remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #cc0000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.spell-remove-btn:hover {
+    opacity: 1;
+}
+
+/* PRINT STYLES */
+@media print {
+    @page {
+        size: landscape;
+        margin: 1.5cm;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .app-container,
+    .main-content,
+    .interaction-area,
+    .content-grid,
+    .right-panel {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Hide everything except spellbook content */
+    .left-panel,
+    .main-header,
+    .settings-panel,
+    .search-container,
+    .class-filter,
+    .spellbook-header,
+    .spell-remove-btn {
+        display: none !important;
+    }
+
+    .spellbook-view {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
+    .spellbook-content {
+        width: 100% !important;
+        max-width: none !important;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        /* Browser handles background if 'background graphics' enabled */
+
+        column-count: 2;
+        column-gap: 1.5cm;
+        column-rule: 1px solid #58180D;
+    }
+
+    .spell-entry {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Theatrical Background for Print */
+    body.print-theatrical .spellbook-content {
+        background-color: #fdf1dc !important;
+        background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E") !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
